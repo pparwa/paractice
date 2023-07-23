@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'vazir';
+    src: url('../font/Vazir.eot') format('eot'),
+    url('../font/Vazir.ttf') format('truetype'),
+    url('../font/Vazir.woff') format('woff'),
+    url('../font/Vazir.woff2') format('woff2');
+}
+
+// mixins 
+@mixin flex-center($dir: row) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @if ($dir == c) {
+        flex-direction: column;
+    } @else {
+        flex-direction: row;   // column  or  row
+    } 
+}
+@mixin title {
+    width: 70%;
+    text-align: center;
+    background-color: $yellow;
+    color: #000094;
+    font-size: 35px;
+    border-radius: 70px;
+    font-weight: 900;
+    text-shadow: 5px 5px 10px gray;
+    padding: 10px 0;
+}
+@mixin btn($bg) {
+    width: 180px;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    background-color: $bg;
+}
+@mixin size($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: vazir;
+}
+
+$white: #FFF;
+$blue: #00f;
+$purple: #8b008b;
+$yellow: #fd0;
+
+:root {
+    --text-color: #000;
+    --white: #fff;
+    --sc-btn: #580058;
+    --sc-bg: yellow;
+}
+body.mode {
+    --text-color: rgb(255, 255, 255);
+    --white: #222;
+    --sc-btn: yellow;
+    --sc-bg: #580058;
+}
+body {
+    direction: rtl;
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.theme-btn-container {
+    .theme-btn {
+        font-size: 27px;
+        @include size(55px, 55px);
+        border-radius: 50%;
+        color: yellow;
+        background-color: darken($color: $purple, $amount: 10%);
+        cursor: pointer;
+        @include flex-center();
+        border: yellow 4px solid;
+        transition: .5s;
+
+        &.fa-sun {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--sc-bg);
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--sc-btn);
+}
+
+.svg1, .svg3 {
+    transform: translateY(10px);
+}
